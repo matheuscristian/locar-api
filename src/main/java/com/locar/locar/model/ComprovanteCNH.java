@@ -1,11 +1,11 @@
 package com.locar.locar.model;
 
 public class ComprovanteCNH {
-    private int id_comprovanteCNH;
-    private String numeroIdentificacao = null;
-    private String dataValidade = null;
-    private String statusCNH = null;
-    private String ufEmissao = null;
+    private int id_comprovanteCNH = 0;
+    private String numeroIdentificacao;
+    private String dataValidade;
+    private String statusCNH;
+    private String ufEmissao;
     private String categoria = null;
     public ComprovanteCNH() {
     }

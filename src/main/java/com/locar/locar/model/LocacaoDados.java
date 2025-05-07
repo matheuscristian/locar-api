@@ -1,14 +1,14 @@
 package com.locar.locar.model;
 
 public class LocacaoDados {
-    private int id_locacaoDados;
+    private int id_locacaoDados = 0;
     private Double valorTotal;
     private String status;
     private String dataSaida;
     private String dataDevolucao;
-    private int cadastroUsuario_id_cadastroUsuario;
-    private int cadastroFuncionario_id_cadastroFuncionario;
-    private int cadastroVeiculo_id_cadastroVeiculo;
+    private int cadastroUsuario_id_cadastroUsuario = 0;
+    private int cadastroFuncionario_id_cadastroFuncionario = 0;
+    private int cadastroVeiculo_id_cadastroVeiculo = 0;
     public LocacaoDados() {
     }
     public LocacaoDados(int id_locacaoDados, Double valorTotal, String status, String dataSaida, String dataDevolucao,

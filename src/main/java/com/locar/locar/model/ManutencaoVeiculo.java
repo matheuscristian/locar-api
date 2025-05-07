@@ -1,12 +1,12 @@
 package com.locar.locar.model;
 
 public class ManutencaoVeiculo {
-    private int id_manutencaoVeiculo;
+    private int id_manutencaoVeiculo = 0;
     private String dataManutencao;
     private String tipoManutencao;
     private Double custo;
     private String observacao;
-    private int cadastroVeiculo_id_cadastroVeiculo;
+    private int cadastroVeiculo_id_cadastroVeiculo = 0;
     
     public ManutencaoVeiculo() {
     }

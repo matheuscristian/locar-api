@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.locar.locar.model.CadastroFuncionario;
 import com.locar.locar.model.CadastroUsuario;
 import com.locar.locar.model.CadastroVeiculo;
 import com.locar.locar.model.ComprovanteCNH;
@@ -19,6 +20,9 @@ import com.locar.locar.model.Pagamento;
 import com.locar.locar.model.requests.POSTLocacao;
 import com.locar.locar.model.requests.POSTUsuario;
 import com.locar.locar.model.requests.POSTVeiculo;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 public class RESTController {
@@ -253,4 +257,71 @@ public class RESTController {
             return null;
         });
     }
+
+    @PostMapping(path = "/funcionario")
+    public CadastroFuncionario postMethodName(@RequestBody CadastroFuncionario cadastroFuncionario) {
+        String INSERT_funcionario = "INSERT INTO cadastrofuncionario (nome, cpf, email, telefone, cargo, senha) VALUES (? ,? ,? ,?, ?, ?);";
+        String SELECT_funcionario = "SELECT * FROM cadastrofuncionario WHERE id_cadastroFuncionario = ?;";
+        
+        return LocarApplication.DatabaseConnection((Connection conn) -> {
+            try {
+                PreparedStatement pStatement = conn.prepareStatement(INSERT_funcionario, PreparedStatement.RETURN_GENERATED_KEYS);
+
+                pStatement.setString(1, cadastroFuncionario.getNome());
+                pStatement.setString(2, cadastroFuncionario.getCpf());
+                pStatement.setString(3, cadastroFuncionario.getEmail());
+                pStatement.setString(4, cadastroFuncionario.getTelefone());
+                pStatement.setString(5, cadastroFuncionario.getCargo());
+                pStatement.setString(6, cadastroFuncionario.getSenha());
+
+                int affectedRows = pStatement.executeUpdate();
+
+                if (affectedRows == 0) {
+                    return null;
+                }
+
+                ResultSet rs = pStatement.getGeneratedKeys();
+                rs.next();
+                int funcionarioID = rs.getInt(1);
+
+                pStatement = conn.prepareStatement(SELECT_funcionario);
+                pStatement.setInt(1, funcionarioID);
+
+                rs = pStatement.executeQuery();
+
+                if (rs.next()) {
+                    return new CadastroFuncionario(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        });
+    }
+
+    @GetMapping(path = "/funcionario")
+    public CadastroFuncionario getMethodName(@RequestParam String email, @RequestParam String senha) {
+        String SELECT_funcionario = "SELECT * FROM cadastrofuncionario WHERE email = ? AND senha = ?;";
+        
+        return LocarApplication.DatabaseConnection((Connection conn) -> {
+            try {
+                PreparedStatement pStatement = conn.prepareStatement(SELECT_funcionario);
+                pStatement.setString(1, email);
+                pStatement.setString(2, senha);
+
+                ResultSet rs = pStatement.executeQuery();
+
+                if (rs.next()) {
+                    return new CadastroFuncionario(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        });
+    }
+    
+    
 }

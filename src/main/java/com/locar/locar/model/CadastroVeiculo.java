@@ -1,7 +1,7 @@
 package com.locar.locar.model;
 
 public class CadastroVeiculo {
-    private int id_cadastroVeiculo;
+    private int id_cadastroVeiculo = 0;
     private String marca;
     private String modelo;
     private String ano;
@@ -12,7 +12,7 @@ public class CadastroVeiculo {
     private String renavam;
     private String tipoCambio;
     private Integer capacidade;
-    private int documentacao_id_documentacao;
+    private int documentacao_id_documentacao = 0;
     public CadastroVeiculo() {
     }
     public CadastroVeiculo(int id_cadastroVeiculo, String marca, String modelo, String ano, String cor, String placa,

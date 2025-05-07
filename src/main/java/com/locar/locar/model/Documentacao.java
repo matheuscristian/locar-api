@@ -1,7 +1,7 @@
 package com.locar.locar.model;
 
 public class Documentacao {
-    private int id_documentacao;
+    private int id_documentacao = 0;
     private String ipva;
     private String seguroVencimento;
     private Double quilometragemAtual;

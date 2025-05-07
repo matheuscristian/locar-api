@@ -1,13 +1,13 @@
 package com.locar.locar.model;
 
 public class CadastroUsuario {
-    private int id_cadastroUsuario;
+    private int id_cadastroUsuario = 0;
     private String nome = null;
     private String cpf = null;
     private String telefone = null;
     private String email = null;
     private String dataDeNascimento = null;
-    private Integer comprovanteCNH_id_comprovanteCNH = null;
+    private int comprovanteCNH_id_comprovanteCNH = 0;
     public CadastroUsuario() {
     }
     public CadastroUsuario(int id_cadastroUsuario, String nome, String cpf, String telefone, String email,

@@ -1,13 +1,13 @@
 package com.locar.locar.model;
 
 public class Pagamento {
-    private int id_pagamento;
+    private int id_pagamento = 0;
     private Double valorTotal;
     private String data;
     private String metodoPagamento;
-    private int devolucao_id_devolucao;
+    private int devolucao_id_devolucao = 0;
     private int taxa_id_taxa;
-    private int locacaoDados_id_locacaoDados;
+    private int locacaoDados_id_locacaoDados = 0;
     public Pagamento() {
     }
     public Pagamento(int id_pagamento, Double valorTotal, String data, String metodoPagamento,

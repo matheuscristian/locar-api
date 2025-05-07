@@ -1,7 +1,7 @@
 package com.locar.locar.model;
 
 public class Taxa {
-    private int id_taxa;
+    private int id_taxa = 0;
     private String descricao;
     private Double valorTotal;
     public Taxa() {

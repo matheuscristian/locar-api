@@ -1,7 +1,7 @@
 package com.locar.locar.model;
 
 public class Devolucao {
-    private int id_devolucao;   
+    private int id_devolucao = 0;   
     private String dataDevolucao;
     private Double combustivelRestante;
     private String statusVeiculo;
