@@ -14,7 +14,7 @@ public class LocarApplication {
 	}
 
 	public static <T> T DatabaseConnection(Function<Connection, T> processor) {
-		String url = "jdbc:mysql://localhost:3306/locarbanco";
+		String url = "jdbc:mysql://localhost:3306/locarbanco?useUnicode=true&characterEncoding=UTF-8";
 		String username = "root";
 		String password = null;
 
